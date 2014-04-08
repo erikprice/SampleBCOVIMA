@@ -1,25 +1,25 @@
 PODS:
-  - Brightcove-Player-SDK (4.1.4):
+  - Brightcove-Player-SDK (4.1.5):
     - ReactiveCocoa (~> 2.1)
-  - Brightcove-Player-SDK-IMA (1.0.4):
+  - Brightcove-Player-SDK-IMA (1.0.5):
     - Brightcove-Player-SDK (~> 4.1)
     - GoogleAds-IMA-iOS-SDK (= 3.0.beta.4)
   - GoogleAds-IMA-iOS-SDK (3.0.beta.4)
-  - ReactiveCocoa (2.2.3):
+  - ReactiveCocoa (2.3):
     - ReactiveCocoa/Core
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/Core (2.2.3):
+  - ReactiveCocoa/Core (2.3):
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.2.3)
+  - ReactiveCocoa/no-arc (2.3)
 
 DEPENDENCIES:
-  - Brightcove-Player-SDK (= 4.1.4)
-  - Brightcove-Player-SDK-IMA (= 1.0.4)
+  - Brightcove-Player-SDK (= 4.1.5)
+  - Brightcove-Player-SDK-IMA (= 1.0.5)
 
 SPEC CHECKSUMS:
-  Brightcove-Player-SDK: 4ce247b274fd622d0ac371d4ca4a17b16f88fa60
-  Brightcove-Player-SDK-IMA: 6d8df348e5a32f1a7ec727f2f3a07b1026e075bb
-  GoogleAds-IMA-iOS-SDK: e1c3ea14aaa20e58e23a66ff43e9d29b8ade1d31
-  ReactiveCocoa: b3cb6ebd50f1a0f2e39c6fd7ce3c428b6efcb22b
+  Brightcove-Player-SDK: 7be0eae28ae191ccc661dc2f96976695bd385c5c
+  Brightcove-Player-SDK-IMA: 44c2726c374e849decefd1ed4dd9c3b6624ebb96
+  GoogleAds-IMA-iOS-SDK: 8ba817cfceb3d9f6b6e4b7afbd514bb01d9e7163
+  ReactiveCocoa: 1f6265f9d521923d3efcc37b00722cefc16df269
 
 COCOAPODS: 0.29.0
