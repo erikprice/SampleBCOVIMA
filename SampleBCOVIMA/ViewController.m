@@ -209,7 +209,7 @@ static NSString * const kViewControllerPlaylistID = @"2149006311001";
     }];
 }
 
-- (BCOVPlaybackControllerViewStrategy)videoStillViewStrategyWithFrame:(CGRect)frame
+- (BCOVPlaybackControllerViewStrategy)videoStillViewStrategyWithFrame
 {
     return [^ UIView * (UIView *videoView, id<BCOVPlaybackController> playbackController) {
         
@@ -241,7 +241,7 @@ static NSString * const kViewControllerPlaylistID = @"2149006311001";
     // In this example, we use the defaultControlsViewStrategy. In real app, you
     // wouldn't be using this.  You would add your controls and container view
     // in the composedViewStrategy block below.
-    BCOVPlaybackControllerViewStrategy stillViewStrategy = [self videoStillViewStrategyWithFrame:frame];
+    BCOVPlaybackControllerViewStrategy stillViewStrategy = [self videoStillViewStrategyWithFrame];
     BCOVPlaybackControllerViewStrategy defaultControlsViewStrategy = [manager defaultControlsViewStrategy];
     BCOVPlaybackControllerViewStrategy imaViewStrategy = [manager BCOVIMAAdViewStrategy];
     
