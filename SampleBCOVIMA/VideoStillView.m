@@ -28,6 +28,9 @@
 {
     if (self = [super init])
     {
+        videoView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        self.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        
         _imageViewBackgroundColor = [UIColor blackColor];
         self.frame = videoView.bounds;
         [self addSubview:videoView];
@@ -53,6 +56,7 @@
     [self dismiss];
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+    imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     imageView.backgroundColor = self.imageViewBackgroundColor;
     [self addSubview:imageView];
