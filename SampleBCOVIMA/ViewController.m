@@ -6,11 +6,13 @@
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
+#import "BCOVPlayerSDK.h"
 #import "BCOVIMA.h"
 
 #import "ViewController.h"
 #import "IMAAdEvent.h"
 #import "RACEXTScope.h"
+#import "VideoStillView.h"
 
 
 // ** Customize Here **
@@ -207,6 +209,31 @@ static NSString * const kViewControllerPlaylistID = @"2149006311001";
     }];
 }
 
+- (BCOVPlaybackControllerViewStrategy)videoStillViewStrategyWithFrame
+{
+    return [^ UIView * (UIView *videoView, id<BCOVPlaybackController> playbackController) {
+        
+        // Returns a view which covers `videoView` with a UIImageView
+        // whose background is black and which presents the video still from
+        // each video as it becomes the current video.
+        VideoStillView *stillView = [[VideoStillView alloc] initWithVideoView:videoView];
+        VideoStillViewMediator *stillViewMediator = [[VideoStillViewMediator alloc] initWithVideoStillView:stillView];
+        // The Google Ads SDK for IMA does not play prerolls instantly when
+        // the AVPlayer starts playing. Delaying the dismissal of the video
+        // still for a second prevents the first video frame from "flashing"
+        // briefly when this happens.
+        stillViewMediator.dismissalDelay = 1.f;
+        
+        // (You should save `consumer` to an instance variable if you will need
+        // to remove it from the playback controller's session consumers.)
+        BCOVDelegatingSessionConsumer *consumer = [[BCOVDelegatingSessionConsumer alloc] initWithDelegate:stillViewMediator];
+        [playbackController addSessionConsumer:consumer];
+        
+        return stillView;
+        
+    } copy];
+}
+
 - (BCOVPlaybackControllerViewStrategy)viewStrategyWithFrame:(CGRect)frame
 {
     BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
@@ -214,6 +241,7 @@ static NSString * const kViewControllerPlaylistID = @"2149006311001";
     // In this example, we use the defaultControlsViewStrategy. In real app, you
     // wouldn't be using this.  You would add your controls and container view
     // in the composedViewStrategy block below.
+    BCOVPlaybackControllerViewStrategy stillViewStrategy = [self videoStillViewStrategyWithFrame];
     BCOVPlaybackControllerViewStrategy defaultControlsViewStrategy = [manager defaultControlsViewStrategy];
     BCOVPlaybackControllerViewStrategy imaViewStrategy = [manager BCOVIMAAdViewStrategy];
     
@@ -229,7 +257,8 @@ static NSString * const kViewControllerPlaylistID = @"2149006311001";
         
         videoView.frame = frame;
         
-        UIView *viewWithControls = defaultControlsViewStrategy(videoView, playbackController); //Replace this with your own container view.
+        UIView *viewWithStill = stillViewStrategy(videoView, playbackController);
+        UIView *viewWithControls = defaultControlsViewStrategy(viewWithStill, playbackController); //Replace this with your own container view.
         UIView *viewWithAdsAndControls = imaViewStrategy(viewWithControls, playbackController);
         
         return viewWithAdsAndControls;

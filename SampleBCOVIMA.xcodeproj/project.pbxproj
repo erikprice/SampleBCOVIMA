@@ -23,6 +23,7 @@
 		49E8C896189C403000219C55 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49E8C894189C403000219C55 /* InfoPlist.strings */; };
 		49E8C898189C403000219C55 /* SampleBCOVIMATests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E8C897189C403000219C55 /* SampleBCOVIMATests.m */; };
 		5D2378A0F5FB4954A845EA99 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD632684D6D4F8EA7BA35A1 /* libPods.a */; };
+		8D278F7A18F5DA33008BD91B /* VideoStillView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D278F7918F5DA33008BD91B /* VideoStillView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		49E8C895189C403000219C55 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		49E8C897189C403000219C55 /* SampleBCOVIMATests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleBCOVIMATests.m; sourceTree = "<group>"; };
 		5DD632684D6D4F8EA7BA35A1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D278F7818F5DA33008BD91B /* VideoStillView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoStillView.h; sourceTree = "<group>"; };
+		8D278F7918F5DA33008BD91B /* VideoStillView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoStillView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,8 @@
 				49E8C87E189C403000219C55 /* Main_iPad.storyboard */,
 				49E8C881189C403000219C55 /* ViewController.h */,
 				49E8C882189C403000219C55 /* ViewController.m */,
+				8D278F7818F5DA33008BD91B /* VideoStillView.h */,
+				8D278F7918F5DA33008BD91B /* VideoStillView.m */,
 				49E8C884189C403000219C55 /* Images.xcassets */,
 				49E8C870189C403000219C55 /* Supporting Files */,
 			);
@@ -295,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49E8C883189C403000219C55 /* ViewController.m in Sources */,
+				8D278F7A18F5DA33008BD91B /* VideoStillView.m in Sources */,
 				49E8C87A189C403000219C55 /* AppDelegate.m in Sources */,
 				49E8C876189C403000219C55 /* main.m in Sources */,
 			);
@@ -432,7 +438,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3AB14220BAA34E51BC14C4E7 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -448,7 +454,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3AB14220BAA34E51BC14C4E7 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
