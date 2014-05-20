@@ -26,6 +26,7 @@ static NSString * const kViewControllerPlaylistID = @"2149006311001";
 @interface ViewController ()
 
 @property (nonatomic, assign) BOOL adIsPlaying;
+@property (nonatomic, assign) BOOL isBrowserOpen;
 @property (nonatomic, strong) BCOVCatalogService *catalogService;
 @property (nonatomic, weak) id<BCOVPlaybackSession> currentPlaybackSession;
 @property (nonatomic, strong) id<BCOVPlaybackController> playbackController;
@@ -80,7 +81,8 @@ static NSString * const kViewControllerPlaylistID = @"2149006311001";
 -(void)setup
 {
     self.adIsPlaying = NO;
-    
+    self.isBrowserOpen = NO;
+
     BCOVPlayerSDKManager *playbackManager = [BCOVPlayerSDKManager sharedManager];
     
     IMASettings *imaSettings = [[IMASettings alloc] init];
@@ -89,6 +91,7 @@ static NSString * const kViewControllerPlaylistID = @"2149006311001";
     
     IMAAdsRenderingSettings *renderSettings = [[IMAAdsRenderingSettings alloc] init];
     renderSettings.webOpenerPresentingController = self;
+    renderSettings.webOpenerDelegate = self;
     
     id<BCOVPlaybackController> playbackController = [playbackManager createIMAPlaybackControllerWithSettings:imaSettings adsRenderingSettings:renderSettings viewStrategy:[self viewStrategyWithFrame:CGRectMake(0, 0, 400, 400)]];
     playbackController.delegate = self;
@@ -104,7 +107,7 @@ static NSString * const kViewControllerPlaylistID = @"2149006311001";
         
         @strongify(self);
         
-        if (self.adIsPlaying)
+        if (self.adIsPlaying && !self.isBrowserOpen)
         {
             [self.playbackController resumeAd];
         }
@@ -113,6 +116,16 @@ static NSString * const kViewControllerPlaylistID = @"2149006311001";
     
     self.catalogService = [[BCOVCatalogService alloc] initWithToken:kViewControllerCatalogToken];
     [self requestContentFromCatalog];
+}
+
+- (void)willOpenInAppBrowser
+{
+    self.isBrowserOpen = YES;
+}
+
+- (void)willCloseInAppBrowser
+{
+    self.isBrowserOpen = NO;
 }
 
 -(void)playbackController:(id<BCOVPlaybackController>)controller didAdvanceToPlaybackSession:(id<BCOVPlaybackSession>)session
